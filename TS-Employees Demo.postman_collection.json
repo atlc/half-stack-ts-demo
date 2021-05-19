@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "41849c49-5abf-4909-94b7-d841c193c71a",
+		"name": "TS-Employees Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api",
+			"item": [
+				{
+					"name": "/employees",
+					"item": [
+						{
+							"name": "Get All Employees",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/employees",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"employees"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Employee",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/employees/34be6943-b22b-4828-944b-eccce31e420a",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"employees",
+										"34be6943-b22b-4828-944b-eccce31e420a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Employee",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"{{$randomFullName}}\",\n    \"username\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"address\": {\n        \"street\": \"{{$randomStreetAddress}}\",\n        \"suite\": \"Apt. {{$randomAlphaNumeric}}\",\n        \"city\": \"South Christy\",\n        \"zipcode\": \"23505-1337\",\n        \"geo\": {\n            \"lat\": \"-71.4197\",\n            \"lng\": \"71.7478\"\n        }\n    },\n    \"phone\": \"1-477-935-8478 x6430\",\n    \"website\": \"ola.org\",\n    \"company\": {\n        \"name\": \"Considine-Lockman\",\n        \"catchPhrase\": \"Synchronised bottom-line interface\",\n        \"bs\": \"e-enable innovative applications\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/employees",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"employees"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Employee",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Updated lmao {{$randomFullName}}\",\n    \"username\": \"{{$randomUserName}}\",\n    \"email\": \"{{$randomEmail}}\",\n    \"address\": {\n        \"street\": \"{{$randomStreetAddress}}\",\n        \"suite\": \"Apt. {{$randomAlphaNumeric}}\",\n        \"city\": \"South Christy\",\n        \"zipcode\": \"23505-1337\",\n        \"geo\": {\n            \"lat\": \"-71.4197\",\n            \"lng\": \"71.7478\"\n        }\n    },\n    \"phone\": \"1-477-935-8478 x6430\",\n    \"website\": \"ola.org\",\n    \"company\": {\n        \"name\": \"Considine-Lockman\",\n        \"catchPhrase\": \"Synchronised bottom-line interface\",\n        \"bs\": \"e-enable innovative applications\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/employees/34be6943-b22b-4828-944b-eccce31e420a",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"employees",
+										"34be6943-b22b-4828-944b-eccce31e420a"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Employee",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/employees/34be6943-b22b-4828-944b-eccce31e420a",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"employees",
+										"34be6943-b22b-4828-944b-eccce31e420a"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
