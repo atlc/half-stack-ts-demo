@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import { v4 as uuid_v4 } from 'uuid';
 
-import { Database_Response, IEmployee } from '../../types';
+import { Pizza_Response, IEmployee } from '../../types';
 
 const employee_store = 'employee_data.json';
 
@@ -38,7 +38,7 @@ const get_employee = (id: IEmployee['id']) => {
 }
 
 const create_employee = (emp: IEmployee) => {
-    return new Promise<Database_Response>(async (resolve, reject) => {
+    return new Promise<Pizza_Response>(async (resolve, reject) => {
         const newEmp = emp;
         const noFalsyProperties = Object.values(newEmp).every(val => val);
 
@@ -72,7 +72,7 @@ const update_employee = async (id: IEmployee['id'], employee: IEmployee) => {
     updatedEmployee.id = id;
     currentEmployees[employeeIndex] = updatedEmployee;
 
-    return new Promise<Database_Response>((resolve, reject) => {
+    return new Promise<Pizza_Response>((resolve, reject) => {
         fs.writeFile(employee_store, JSON.stringify(currentEmployees), (err) => {
             if (err) {
                 console.log(err);
@@ -81,7 +81,7 @@ const update_employee = async (id: IEmployee['id'], employee: IEmployee) => {
                 if (!employeeIndex) {
                     reject('No employee with that ID was found')
                 } else {
-                    resolve({ message: 'Success, the employee was updated successfully.' });
+                    resolve({ message: 'Success, the employee was updated successfully.', created_id: 'Doodoo' });
                 }
             }
         });
@@ -94,7 +94,7 @@ const remove_employee = async (id: IEmployee['id']) => {
 
     currentEmployees.splice(employeeIndex);
 
-    return new Promise<Database_Response>((resolve, reject) => {
+    return new Promise<Pizza_Response>((resolve, reject) => {
         fs.writeFile(employee_store, JSON.stringify(currentEmployees), (err) => {
             if (err) {
                 console.log(err);
@@ -111,8 +111,8 @@ const remove_employee = async (id: IEmployee['id']) => {
 }
 
 export default {
-    get_employee,
-    get_employees,
+    get_single_employee: get_employee,
+    get_all_employees: get_employees,
     create_employee,
     update_employee,
     remove_employee

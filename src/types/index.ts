@@ -22,7 +22,7 @@ export interface IEmployee {
     }
 }
 
-export interface Database_Response {
+export interface Pizza_Response {
     message: string;
     created_id?: string;
 }

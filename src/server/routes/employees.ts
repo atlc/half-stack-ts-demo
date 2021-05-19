@@ -1,37 +1,56 @@
 import * as express from 'express';
-import { IEmployee } from '../../types';
-import db from '../db';
+import database from '../db';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    const employees = await db.get_employees();
-    res.json(employees);
+    try {
+        const allEmployees = await database.get_all_employees();
+        res.json(allEmployees);
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred!", error });
+    }
 });
 
 router.get('/:id', async (req, res) => {
-    const id = req.params.id;
-    const employee = await db.get_employee(id);
-    res.json(employee);
+    try {
+        const id = req.params.id;
+        const employee = await database.get_single_employee(id);
+        res.json(employee);
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred!", error });
+    }
 });
 
 router.post('/', async (req, res) => {
-    const newEmployee: IEmployee = req.body;
-    const results = await db.create_employee(newEmployee);
-    res.json(results);
+    try {
+        const newEmployee = req.body;
+        const results = await database.create_employee(newEmployee);
+        res.json(results);
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred!", error });
+    }
 });
 
 router.put('/:id', async (req, res) => {
-    const id: IEmployee['id'] = req.params.id;
-    const updatedEmployee: IEmployee = req.body;
-    const results = await db.update_employee(id, updatedEmployee);
-    res.json(results);
+    try {
+        const id = req.params.id;
+        const updatedEmployee = req.body;
+        const results = await database.update_employee(id, updatedEmployee);
+        res.json(results);
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred!", error });
+    }
 });
 
 router.delete('/:id', async (req, res) => {
-    const id: IEmployee['id'] = req.params.id;
-    const results = await db.remove_employee(id);
-    res.json(results);
+    try {
+        const id = req.params.id;
+        const results = await database.remove_employee(id);
+        res.json(results);
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred!", error });
+    }
 });
 
 export default router;
